@@ -1,31 +1,24 @@
 <template>
-  <div class="Padre">
-    <Hijo :msg="nameHijo"/>
-    <ul v-for="(personas, index) in nameArreglo" :key="index">
-      <li>{{personas.nombre}}</li>
-    </ul>
+  <div class="Hermano">
+    <input type="text" placeholder="filtra por nombres" :value="title"
+           @input="$emit('update:title', $event.target.value)">
   </div>
 </template>
 
 <script>
-import Hijo from "./Hijo";
+
 export default {
-  name: 'Padre',
-  components: {
-    Hijo
-  },
+  name: 'Hermano',
   props: {
-    msg: Array
+    title: String
   },
-  data () {
+  emits: ['update:title'],
+  data() {
     return {
-      nameHijo: ' ',
-      nameArreglo: this.msg
+      nameHermano: this.msg
     }
   },
-  methods: {
-
-  }
+  methods: {}
 }
 </script>
 
@@ -34,14 +27,17 @@ export default {
 h3 {
   margin: 40px 0 0;
 }
+
 ul {
   list-style-type: none;
   padding: 0;
 }
+
 li {
   display: inline-block;
   margin: 0 10px;
 }
+
 a {
   color: #42b983;
 }
